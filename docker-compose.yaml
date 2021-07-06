@@ -8,7 +8,7 @@ services:
       context: .
       dockerfile: Dockerfile.tensorflow-gpu-jpyter   
       target: base
-    volume:
+    volumes:
       - ./notebooks/tjg-1:/tf
     command:
       - /bin/sh
