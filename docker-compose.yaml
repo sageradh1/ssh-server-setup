@@ -2,26 +2,28 @@ version: '3.7'
 
 services:
 
-  # tensorflow-jupyter-gpu:
-  #   container_name: tjg-1
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile.tensorflow-gpu-jpyter   
-  #     target: base
-  #   command:
-  #     - /bin/sh
-  #     - -c
-  #     - |
-  #       echo "Starting docker-compose's tensorflow-jupyter-gpu"
-  #   environment:
-  #     ##### run time ###############
-  #     TEST_ENV_VAR: ${TEST_ENV_VAR}
-  #   ports:
-  #     - 8888:8888 
-  #   networks:
-  #     - webnet
-  #   restart: always
-
+  tensorflow-jupyter-gpu:
+    container_name: tjg-1
+    build:
+      context: .
+      dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+      target: base
+    command:
+      - /bin/sh
+      - -c
+      - |
+        echo "Starting docker-compose's tensorflow-jupyter-gpu"
+        nvidia-smi
+        jupyter notebook --ip 0.0.0.0 . --allow-root
+        
+    environment:
+      ##### run time ###############
+      TEST_ENV_VAR: ${TEST_ENV_VAR}
+    ports:
+      - 1234:8888 
+    networks:
+      - webnet
+    restart: always
 
 
   tensorflow-nightly-jupyter:
@@ -30,22 +32,38 @@ services:
       context: .
       dockerfile: Dockerfile.nightly-jupyter
       target: base
-    volumes: 
-      - ./tailfile.txt:/setup/tailfile.txt
+    # volumes: 
+    #   - ./notebooks:/notebooks  
+    #   - ./tailfile.txt:/setup/tailfile.txt
     command:
       - /bin/sh
       - -c
       - |
         echo "Starting docker-compose's tensorflow-nightly-jupyter"
-        tail -F /setup/tailfile.txt
+        jupyter notebook --ip 0.0.0.0 . --allow-root
+
     environment:
       ##### run time ###############
       TEST_ENV_VAR: ${TEST_ENV_VAR}
     ports:
-      - 8888:8888 
+      - 1235:8888 
     networks:
       - webnet
     restart: always
+
+
+
+  # datascience-notebook:
+  #   image: jupyter/tensorflow-notebook
+  #   container_name: tn-1
+  #   # volumes:
+  #   #   - </path/to/local/project/files>:/home/jovyan/work
+  #   ports:
+  #     - 8888:8888
+  #   networks:
+  #     - webnet
+  #   restart: always
+
 
 networks:
   webnet:

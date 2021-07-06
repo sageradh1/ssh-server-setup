@@ -1,1 +1,3 @@
 FROM tensorflow/tensorflow:nightly-jupyter AS base
+# WORKDIR /setup
+# RUN touch tailfile.txt
