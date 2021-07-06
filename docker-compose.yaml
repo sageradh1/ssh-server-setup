@@ -31,7 +31,7 @@ services:
       dockerfile: Dockerfile.nightly-jupyter
       target: base
     volumes: 
-      - tailfile.txt:/setup/tailfile.txt
+      - ./tailfile.txt:/setup/tailfile.txt
     command:
       - /bin/sh
       - -c
