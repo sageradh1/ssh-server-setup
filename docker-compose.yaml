@@ -15,9 +15,7 @@ services:
       - -c
       - |
         echo "Starting docker-compose's tensorflow-jupyter-gpu"
-        echo "During starting ${NVIDIA_VISIBLE_DEVICES}"
         nvidia-smi
-        
         jupyter notebook --notebook-dir=/tf --ip 0.0.0.0 --no-browser --allow-root
         
     environment:
