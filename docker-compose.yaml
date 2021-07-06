@@ -9,9 +9,9 @@ services:
       context: .
       dockerfile: Dockerfile.tensorflow-gpu-jpyter   
       target: base
-      volumes: 
-        - ./containers/tjg-1-manish/notebooks:/notebooks
-        - ./containers/tjg-1-manish/config:/config
+    volumes: 
+      - ./containers/tjg-1-manish/notebooks:/notebooks
+      - ./containers/tjg-1-manish/config:/config
     command:
       - /bin/sh
       - -c
