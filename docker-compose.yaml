@@ -1,0 +1,53 @@
+version: '3.7'
+
+services:
+
+  # tensorflow-jupyter-gpu:
+  #   container_name: tjg-1
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+  #     target: base
+  #   command:
+  #     - /bin/sh
+  #     - -c
+  #     - |
+  #       echo "Starting docker-compose's tensorflow-jupyter-gpu"
+  #   environment:
+  #     ##### run time ###############
+  #     TEST_ENV_VAR: ${TEST_ENV_VAR}
+  #   ports:
+  #     - 8888:8888 
+  #   networks:
+  #     - webnet
+  #   restart: always
+
+
+
+  tensorflow-nightly-jupyter:
+    container_name: tnj-1
+    build:
+      context: .
+      dockerfile: Dockerfile.nightly-jupyter
+      target: base
+    command:
+      - /bin/sh
+      - -c
+      - |
+        echo "Starting docker-compose's tensorflow-nightly-jupyter"
+    environment:
+      ##### run time ###############
+      TEST_ENV_VAR: ${TEST_ENV_VAR}
+    ports:
+      - 8888:8888 
+    networks:
+      - webnet
+    restart: always
+
+networks:
+  webnet:
+
+volumes:
+  pgadmin-configs:
+    driver: local
+  pgdata-server:
