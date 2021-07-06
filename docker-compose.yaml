@@ -2,121 +2,112 @@ version: '3.7'
 
 services:
 
-  # tensorflow-jupyter-gpu:
-  #   container_name: tjg-1
+############################################## GPU containers ##############################################################
+  tensorflow-jupyter-gpu-manish:
+    container_name: tjg-1-manish
+    build:
+      context: .
+      dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+      target: base
+      volumes: 
+        - ./containers/tjg-1-manish/notebooks:/notebooks
+        - ./containers/tjg-1-manish/config:/config
+    command:
+      - /bin/sh
+      - -c
+      - |
+        echo "Starting docker-compose's tensorflow-jupyter-gpu"
+        # nvidia-smi
+        jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+        
+    environment:
+      ##### run time ###############
+      TEST_ENV_VAR: ${TEST_ENV_VAR}
+      NVIDIA_VISIBLE_DEVICES: all
+    ports:
+      - 1234:1234
+    networks:
+      - webnet
+    restart: always
+    # tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+          -  driver: nvidia
+             count: all
+             capabilities: [gpu]
+
+############################################## Non GPU Nightly containers ##############################################################
+  # tensorflow-nightly-jupyter-1:
+  #   container_name: tnj-1
   #   build:
   #     context: .
-  #     dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+  #     dockerfile: Dockerfile.nightly-jupyter
   #     target: base
-  #   volumes:
-  #     - ./containers/tjg-1:/notebooks
+  #     args: 
+  #       PORT: ${BIGYAN_PORT}
+  #   volumes: 
+  #     - ./containers/tnj-1/notebooks:/notebooks
+  #     - ./containers/tnj-1/config:/config
+  #     # - ./tailfile.txt:/setup/tailfile.txt
+  #   # tty: true
   #   command:
-  #     - /bin/sh
+  #     - /bin/bash
   #     - -c
   #     - |
-  #       echo "Starting docker-compose's tensorflow-jupyter-gpu"
-  #       nvidia-smi
-  #       jupyter notebook --notebook-dir=/notebooks --ip 0.0.0.0 --no-browser --allow-root
+  #       echo "Starting docker-compose's tensorflow-nightly-jupyter"
+  #       # jupyter notebook --notebook-dir=/notebooks --ip 0.0.0.0 --no-browser --allow-root
+
+  #       # export JUPYTER_CONFIG_DIR=/config
+  #       # jupyter notebook --generate-config
         
+  #       jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+
+
+  #       # tail -F tailfile.txt
   #   environment:
   #     ##### run time ###############
   #     TEST_ENV_VAR: ${TEST_ENV_VAR}
-  #     NVIDIA_VISIBLE_DEVICES: all
   #   ports:
-  #     - 1234:8888 
+  #     - 1235:1235 
   #   networks:
   #     - webnet
   #   restart: always
+
+
+  # tensorflow-nightly-jupyter-2:
+  #   container_name: tnj-2
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.nightly-jupyter
+  #     target: base
+  #   volumes: 
+  #     - ./containers/tnj-2/notebooks:/notebooks
+  #     - ./containers/tnj-2/config:/config
+  #     # - ./tailfile.txt:/setup/tailfile.txt
   #   # tty: true
-  #   deploy:
-  #     resources:
-  #       reservations:
-  #         devices:
-  #         -  driver: nvidia
-  #            count: all
-  #            capabilities: [gpu]
+  #   command:
+  #     - /bin/bash
+  #     - -c
+  #     - |
+  #       echo "Starting docker-compose's tensorflow-nightly-jupyter"
+  #       # jupyter notebook --notebook-dir=/notebooks --ip 0.0.0.0 --no-browser --allow-root
 
-
-  tensorflow-nightly-jupyter-1:
-    container_name: tnj-1
-    build:
-      context: .
-      dockerfile: Dockerfile.nightly-jupyter
-      target: base
-      args: 
-        PORT: ${BIGYAN_PORT}
-    volumes: 
-      - ./containers/tnj-1/notebooks:/notebooks
-      - ./containers/tnj-1/config:/config
-      # - ./tailfile.txt:/setup/tailfile.txt
-    # tty: true
-    command:
-      - /bin/bash
-      - -c
-      - |
-        echo "Starting docker-compose's tensorflow-nightly-jupyter"
-        # jupyter notebook --notebook-dir=/notebooks --ip 0.0.0.0 --no-browser --allow-root
-
-        # export JUPYTER_CONFIG_DIR=/config
-        # jupyter notebook --generate-config
+  #       # export JUPYTER_CONFIG_DIR=/config
+  #       # jupyter notebook --generate-config
         
-        jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+  #       jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
 
-
-        # tail -F tailfile.txt
-    environment:
-      ##### run time ###############
-      TEST_ENV_VAR: ${TEST_ENV_VAR}
-    ports:
-      - 1235:1235 
-    networks:
-      - webnet
-    restart: always
-
-
-  tensorflow-nightly-jupyter-2:
-    container_name: tnj-2
-    build:
-      context: .
-      dockerfile: Dockerfile.nightly-jupyter
-      target: base
-    volumes: 
-      - ./containers/tnj-2/notebooks:/notebooks
-      - ./containers/tnj-2/config:/config
-      # - ./tailfile.txt:/setup/tailfile.txt
-    # tty: true
-    command:
-      - /bin/bash
-      - -c
-      - |
-        echo "Starting docker-compose's tensorflow-nightly-jupyter"
-        # jupyter notebook --notebook-dir=/notebooks --ip 0.0.0.0 --no-browser --allow-root
-
-        # export JUPYTER_CONFIG_DIR=/config
-        # jupyter notebook --generate-config
-        
-        jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
-
-        # tail -F tailfile.txt
-    environment:
-      ##### run time ###############
-      TEST_ENV_VAR: ${TEST_ENV_VAR}
-    ports:
-      - 1236:1236 
-    networks:
-      - webnet
-    restart: always
-  # datascience-notebook:
-  #   image: jupyter/tensorflow-notebook
-  #   container_name: tn-1
-  #   # volumes:
-  #   #   - </path/to/local/project/files>:/home/jovyan/work
+  #       # tail -F tailfile.txt
+  #   environment:
+  #     ##### run time ###############
+  #     TEST_ENV_VAR: ${TEST_ENV_VAR}
   #   ports:
-  #     - 8888:8888
+  #     - 1236:1236 
   #   networks:
   #     - webnet
   #   restart: always
-
 
 networks:
   webnet:
