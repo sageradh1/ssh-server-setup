@@ -35,6 +35,7 @@ services:
       - -c
       - |
         echo "Starting docker-compose's tensorflow-nightly-jupyter"
+        tail -F anything
     environment:
       ##### run time ###############
       TEST_ENV_VAR: ${TEST_ENV_VAR}
