@@ -8,13 +8,15 @@ services:
       context: .
       dockerfile: Dockerfile.tensorflow-gpu-jpyter   
       target: base
+    volume:
+      - ./notebooks/tjg-1:/tf
     command:
       - /bin/sh
       - -c
       - |
         echo "Starting docker-compose's tensorflow-jupyter-gpu"
         nvidia-smi
-        jupyter notebook --ip 0.0.0.0 . --allow-root
+        jupyter notebook --notebook-dir=/tf --ip 0.0.0.0 --no-browser --allow-root
         
     environment:
       ##### run time ###############
