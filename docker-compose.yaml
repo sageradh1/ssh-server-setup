@@ -26,6 +26,14 @@ services:
     networks:
       - webnet
     restart: always
+    # tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+          -  driver: nvidia
+             count: all
+             capabilities: [gpu]
 
 
   tensorflow-nightly-jupyter:
