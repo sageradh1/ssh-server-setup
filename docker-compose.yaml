@@ -3,290 +3,290 @@ version: '3.7'
 services:
 
 ############################################## GPU containers ##############################################################
-#   tensorflow-jupyter-gpu-manish:
-#     container_name: tjg-1-manish
-#     build:
-#       context: .
-#       dockerfile: Dockerfile.tensorflow-gpu-jpyter   
-#       target: base
-#     volumes: 
-#       - ./containers/tjg-1-manish/notebooks:/notebooks
-#       - ./containers/tjg-1-manish/config:/config
-#     command:
-#       - /bin/sh
-#       - -c
-#       - |
-#         echo "Starting docker-compose's tensorflow-jupyter-gpu"
-#         # nvidia-smi
-#         jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+  tensorflow-jupyter-gpu-manish:
+    container_name: tjg-1-manish
+    build:
+      context: .
+      dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+      target: base
+    volumes: 
+      - /home/manishb/setup/ssh-server-setup/containers/tjg-1-manish/notebooks:/notebooks
+      - /home/manishb/setup/ssh-server-setup/containers/tjg-1-manish/config:/config
+    command:
+      - /bin/sh
+      - -c
+      - |
+        echo "Starting docker-compose's tensorflow-jupyter-gpu"
+        # nvidia-smi
+        jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
         
-#     environment:
-#       ##### run time ###############
-#       TEST_ENV_VAR: ${TEST_ENV_VAR}
-#       NVIDIA_VISIBLE_DEVICES: all
-#     ports:
-#       - 1234:1234
-#     networks:
-#       - webnet
-#     restart: always
-#     # tty: true
-#     deploy:
-#       resources:
-#         reservations:
-#           devices:
-#           -  driver: nvidia
-#              count: all
-#              capabilities: [gpu]
-# #######
-#   tensorflow-jupyter-gpu-niten:
-#   container_name: tjg-2-niten
-#   build:
-#     context: .
-#     dockerfile: Dockerfile.tensorflow-gpu-jpyter   
-#     target: base
-#   volumes: 
-#     - ./containers/tjg-2-niten/notebooks:/notebooks
-#     - ./containers/tjg-2-niten/config:/config
-#   command:
-#     - /bin/sh
-#     - -c
-#     - |
-#       echo "Starting docker-compose's tensorflow-jupyter-gpu"
-#       # nvidia-smi
-#       jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+    environment:
+      ##### run time ###############
+      TEST_ENV_VAR: ${TEST_ENV_VAR}
+      NVIDIA_VISIBLE_DEVICES: all
+    ports:
+      - 1234:1234
+    networks:
+      - webnet
+    restart: always
+    # tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+          -  driver: nvidia
+             count: all
+             capabilities: [gpu]
+#######
+  tensorflow-jupyter-gpu-niten:
+  container_name: tjg-2-niten
+  build:
+    context: .
+    dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+    target: base
+  volumes: 
+    - /home/nitenl/setup/ssh-server-setup/containers/tjg-2-niten/notebooks:/notebooks
+    - /home/nitenl/setup/ssh-server-setup/containers/tjg-2-niten/config:/config
+  command:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting docker-compose's tensorflow-jupyter-gpu"
+      # nvidia-smi
+      jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
       
-#   environment:
-#     ##### run time ###############
-#     TEST_ENV_VAR: ${TEST_ENV_VAR}
-#     NVIDIA_VISIBLE_DEVICES: all
-#   ports:
-#     - 1235:1235
-#   networks:
-#     - webnet
-#   restart: always
-#   # tty: true
-#   deploy:
-#     resources:
-#       reservations:
-#         devices:
-#         -  driver: nvidia
-#             count: all
-#             capabilities: [gpu]
-# ######
-# tensorflow-jupyter-gpu-gaurab:
-#   container_name: tjg-3-gaurab
-#   build:
-#     context: .
-#     dockerfile: Dockerfile.tensorflow-gpu-jpyter   
-#     target: base
-#   volumes: 
-#     - ./containers/tjg-3-gaurab/notebooks:/notebooks
-#     - ./containers/tjg-3-gaurab/config:/config
-#   command:
-#     - /bin/sh
-#     - -c
-#     - |
-#       echo "Starting docker-compose's tensorflow-jupyter-gpu"
-#       # nvidia-smi
-#       jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+  environment:
+    ##### run time ###############
+    TEST_ENV_VAR: ${TEST_ENV_VAR}
+    NVIDIA_VISIBLE_DEVICES: all
+  ports:
+    - 1235:1235
+  networks:
+    - webnet
+  restart: always
+  # tty: true
+  deploy:
+    resources:
+      reservations:
+        devices:
+        -   driver: nvidia
+            count: all
+            capabilities: [gpu]
+######
+tensorflow-jupyter-gpu-gaurab:
+  container_name: tjg-3-gaurab
+  build:
+    context: .
+    dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+    target: base
+  volumes: 
+    - /home/gaurabs/setup/ssh-server-setup/containers/tjg-3-gaurab/notebooks:/notebooks
+    - /home/gaurabs/setup/ssh-server-setup/containers/tjg-3-gaurab/config:/config
+  command:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting docker-compose's tensorflow-jupyter-gpu"
+      # nvidia-smi
+      jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
       
-#   environment:
-#     ##### run time ###############
-#     TEST_ENV_VAR: ${TEST_ENV_VAR}
-#     NVIDIA_VISIBLE_DEVICES: all
-#   ports:
-#     - 1236:1236
-#   networks:
-#     - webnet
-#   restart: always
-#   # tty: true
-#   deploy:
-#     resources:
-#       reservations:
-#         devices:
-#         -  driver: nvidia
-#            count: all
-#            capabilities: [gpu]
-# ########
-# tensorflow-jupyter-gpu-subash:
-#   container_name: tjg-4-subash
-#   build:
-#     context: .
-#     dockerfile: Dockerfile.tensorflow-gpu-jpyter   
-#     target: base
-#   volumes: 
-#     - ./containers/tjg-4-subash/notebooks:/notebooks
-#     - ./containers/tjg-4-subash/config:/config
-#   command:
-#     - /bin/sh
-#     - -c
-#     - |
-#       echo "Starting docker-compose's tensorflow-jupyter-gpu"
-#       # nvidia-smi
-#       jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+  environment:
+    ##### run time ###############
+    TEST_ENV_VAR: ${TEST_ENV_VAR}
+    NVIDIA_VISIBLE_DEVICES: all
+  ports:
+    - 1236:1236
+  networks:
+    - webnet
+  restart: always
+  # tty: true
+  deploy:
+    resources:
+      reservations:
+        devices:
+        -  driver: nvidia
+           count: all
+           capabilities: [gpu]
+########
+tensorflow-jupyter-gpu-subash:
+  container_name: tjg-4-subash
+  build:
+    context: .
+    dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+    target: base
+  volumes: 
+    - /home/subashs/setup/ssh-server-setup/containers/tjg-4-subash/notebooks:/notebooks
+    - /home/subashs/setup/ssh-server-setup/containers/tjg-4-subash/config:/config
+  command:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting docker-compose's tensorflow-jupyter-gpu"
+      # nvidia-smi
+      jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
       
-#   environment:
-#     ##### run time ###############
-#     TEST_ENV_VAR: ${TEST_ENV_VAR}
-#     NVIDIA_VISIBLE_DEVICES: all
-#   ports:
-#     - 1237:1237
-#   networks:
-#     - webnet
-#   restart: always
-#   # tty: true
-#   deploy:
-#     resources:
-#       reservations:
-#         devices:
-#         -  driver: nvidia
-#            count: all
-#            capabilities: [gpu]
-# ########
+  environment:
+    ##### run time ###############
+    TEST_ENV_VAR: ${TEST_ENV_VAR}
+    NVIDIA_VISIBLE_DEVICES: all
+  ports:
+    - 1237:1237
+  networks:
+    - webnet
+  restart: always
+  # tty: true
+  deploy:
+    resources:
+      reservations:
+        devices:
+        -  driver: nvidia
+           count: all
+           capabilities: [gpu]
+########
 
-# tensorflow-jupyter-gpu-bijaya:
-#   container_name: tjg-5-bijaya
-#   build:
-#     context: .
-#     dockerfile: Dockerfile.tensorflow-gpu-jpyter   
-#     target: base
-#   volumes: 
-#     - ./containers/tjg-5-bijaya/notebooks:/notebooks
-#     - ./containers/tjg-5-bijaya/config:/config
-#   command:
-#     - /bin/sh
-#     - -c
-#     - |
-#       echo "Starting docker-compose's tensorflow-jupyter-gpu"
-#       # nvidia-smi
-#       jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+tensorflow-jupyter-gpu-bijaya:
+  container_name: tjg-5-bijaya
+  build:
+    context: .
+    dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+    target: base
+  volumes: 
+    - /home/bijayd/setup/ssh-server-setup/containers/tjg-5-bijaya//notebooks:/notebooks
+    - /home/bijayd/setup/ssh-server-setup/containers/tjg-5-bijaya//config:/config
+  command:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting docker-compose's tensorflow-jupyter-gpu"
+      # nvidia-smi
+      jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
       
-#   environment:
-#     ##### run time ###############
-#     TEST_ENV_VAR: ${TEST_ENV_VAR}
-#     NVIDIA_VISIBLE_DEVICES: all
-#   ports:
-#     - 1238:1238
-#   networks:
-#     - webnet
-#   restart: always
-#   # tty: true
-#   deploy:
-#     resources:
-#       reservations:
-#         devices:
-#         -  driver: nvidia
-#            count: all
-#            capabilities: [gpu]
-# ########
+  environment:
+    ##### run time ###############
+    TEST_ENV_VAR: ${TEST_ENV_VAR}
+    NVIDIA_VISIBLE_DEVICES: all
+  ports:
+    - 1238:1238
+  networks:
+    - webnet
+  restart: always
+  # tty: true
+  deploy:
+    resources:
+      reservations:
+        devices:
+        -  driver: nvidia
+           count: all
+           capabilities: [gpu]
+########
 
-# tensorflow-jupyter-gpu-roshan:
-#   container_name: tjg-6-roshan
-#   build:
-#     context: .
-#     dockerfile: Dockerfile.tensorflow-gpu-jpyter   
-#     target: base
-#   volumes: 
-#     - ./containers/tjg-6-roshan/notebooks:/notebooks
-#     - ./containers/tjg-6-roshan/config:/config
-#   command:
-#     - /bin/sh
-#     - -c
-#     - |
-#       echo "Starting docker-compose's tensorflow-jupyter-gpu"
-#       # nvidia-smi
-#       jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+tensorflow-jupyter-gpu-roshan:
+  container_name: tjg-6-roshan
+  build:
+    context: .
+    dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+    target: base
+  volumes: 
+    - /home/roshans/setup/ssh-server-setup/containers/tjg-6-roshan/notebooks:/notebooks
+    - /home/roshans/setup/ssh-server-setup/containers/tjg-6-roshan/config:/config
+  command:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting docker-compose's tensorflow-jupyter-gpu"
+      # nvidia-smi
+      jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
       
-#   environment:
-#     ##### run time ###############
-#     TEST_ENV_VAR: ${TEST_ENV_VAR}
-#     NVIDIA_VISIBLE_DEVICES: all
-#   ports:
-#     - 1239:1239
-#   networks:
-#     - webnet
-#   restart: always
-#   # tty: true
-#   deploy:
-#     resources:
-#       reservations:
-#         devices:
-#         -  driver: nvidia
-#            count: all
-#            capabilities: [gpu]
-# ########
+  environment:
+    ##### run time ###############
+    TEST_ENV_VAR: ${TEST_ENV_VAR}
+    NVIDIA_VISIBLE_DEVICES: all
+  ports:
+    - 1239:1239
+  networks:
+    - webnet
+  restart: always
+  # tty: true
+  deploy:
+    resources:
+      reservations:
+        devices:
+        -  driver: nvidia
+           count: all
+           capabilities: [gpu]
+########
 
-# tensorflow-jupyter-gpu-prakash:
-#   container_name: tjg-7-prakash
-#   build:
-#     context: .
-#     dockerfile: Dockerfile.tensorflow-gpu-jpyter   
-#     target: base
-#   volumes: 
-#     - ./containers/tjg-7-prakash/notebooks:/notebooks
-#     - ./containers/tjg-7-prakash/config:/config
-#   command:
-#     - /bin/sh
-#     - -c
-#     - |
-#       echo "Starting docker-compose's tensorflow-jupyter-gpu"
-#       # nvidia-smi
-#       jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+tensorflow-jupyter-gpu-prakash:
+  container_name: tjg-7-prakash
+  build:
+    context: .
+    dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+    target: base
+  volumes: 
+    - /home/prakashd/setup/ssh-server-setup/containers/tjg-7-prakash/notebooks:/notebooks
+    - /home/prakashd/setup/ssh-server-setup/containers/tjg-7-prakash/config:/config
+  command:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting docker-compose's tensorflow-jupyter-gpu"
+      # nvidia-smi
+      jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
       
-#   environment:
-#     ##### run time ###############
-#     TEST_ENV_VAR: ${TEST_ENV_VAR}
-#     NVIDIA_VISIBLE_DEVICES: all
-#   ports:
-#     - 1240:1240
-#   networks:
-#     - webnet
-#   restart: always
-#   # tty: true
-#   deploy:
-#     resources:
-#       reservations:
-#         devices:
-#         -  driver: nvidia
-#            count: all
-#            capabilities: [gpu]
-# ########
+  environment:
+    ##### run time ###############
+    TEST_ENV_VAR: ${TEST_ENV_VAR}
+    NVIDIA_VISIBLE_DEVICES: all
+  ports:
+    - 1240:1240
+  networks:
+    - webnet
+  restart: always
+  # tty: true
+  deploy:
+    resources:
+      reservations:
+        devices:
+        -  driver: nvidia
+           count: all
+           capabilities: [gpu]
+########
 
-# tensorflow-jupyter-gpu-bigyan:
-#   container_name: tjg-8-bigyan
-#   build:
-#     context: .
-#     dockerfile: Dockerfile.tensorflow-gpu-jpyter   
-#     target: base
-#   volumes: 
-#     - ./containers/tjg-8-bigyan/notebooks:/notebooks
-#     - ./containers/tjg-8-bigyan/config:/config
-#   command:
-#     - /bin/sh
-#     - -c
-#     - |
-#       echo "Starting docker-compose's tensorflow-jupyter-gpu"
-#       # nvidia-smi
-#       jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+tensorflow-jupyter-gpu-bigyan:
+  container_name: tjg-8-bigyan
+  build:
+    context: .
+    dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+    target: base
+  volumes: 
+    - /home/bigyans/setup/ssh-server-setup/containers/tjg-8-bigyan/notebooks:/notebooks
+    - /home/bigyans/setup/ssh-server-setup/containers/tjg-8-bigyan/config:/config
+  command:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting docker-compose's tensorflow-jupyter-gpu"
+      # nvidia-smi
+      jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
       
-#   environment:
-#     ##### run time ###############
-#     TEST_ENV_VAR: ${TEST_ENV_VAR}
-#     NVIDIA_VISIBLE_DEVICES: all
-#   ports:
-#     - 1241:1241
-#   networks:
-#     - webnet
-#   restart: always
-#   # tty: true
-#   deploy:
-#     resources:
-#       reservations:
-#         devices:
-#         -  driver: nvidia
-#            count: all
-#            capabilities: [gpu]
-# ########
+  environment:
+    ##### run time ###############
+    TEST_ENV_VAR: ${TEST_ENV_VAR}
+    NVIDIA_VISIBLE_DEVICES: all
+  ports:
+    - 1241:1241
+  networks:
+    - webnet
+  restart: always
+  # tty: true
+  deploy:
+    resources:
+      reservations:
+        devices:
+        -  driver: nvidia
+           count: all
+           capabilities: [gpu]
+########
 
   tensorflow-jupyter-gpu-sagar:
     container_name: tjg-9-sagar
@@ -324,149 +324,149 @@ services:
              capabilities: [gpu]
 ########
 
-# tensorflow-jupyter-gpu-rk:
-#   container_name: tjg-10-rk
-#   build:
-#     context: .
-#     dockerfile: Dockerfile.tensorflow-gpu-jpyter   
-#     target: base
-#   volumes: 
-#     - ./containers/tjg-10-rk/notebooks:/notebooks
-#     - ./containers/tjg-10-rk/config:/config
-#   command:
-#     - /bin/sh
-#     - -c
-#     - |
-#       echo "Starting docker-compose's tensorflow-jupyter-gpu"
-#       # nvidia-smi
-#       jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+tensorflow-jupyter-gpu-rk:
+  container_name: tjg-10-rk
+  build:
+    context: .
+    dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+    target: base
+  volumes: 
+    - /home/rkl/setup/ssh-server-setup/containers/tjg-10-rk/notebooks:/notebooks
+    - /home/rkl/setup/ssh-server-setup/containers/tjg-10-rk/config:/config
+  command:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting docker-compose's tensorflow-jupyter-gpu"
+      # nvidia-smi
+      jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
       
-#   environment:
-#     ##### run time ###############
-#     TEST_ENV_VAR: ${TEST_ENV_VAR}
-#     NVIDIA_VISIBLE_DEVICES: all
-#   ports:
-#     - 1243:1243
-#   networks:
-#     - webnet
-#   restart: always
-#   # tty: true
-#   deploy:
-#     resources:
-#       reservations:
-#         devices:
-#         -  driver: nvidia
-#            count: all
-#            capabilities: [gpu]
-# ########
+  environment:
+    ##### run time ###############
+    TEST_ENV_VAR: ${TEST_ENV_VAR}
+    NVIDIA_VISIBLE_DEVICES: all
+  ports:
+    - 1243:1243
+  networks:
+    - webnet
+  restart: always
+  # tty: true
+  deploy:
+    resources:
+      reservations:
+        devices:
+        -  driver: nvidia
+           count: all
+           capabilities: [gpu]
+########
 
-# tensorflow-jupyter-gpu-jabir:
-#   container_name: tjg-11-jabir
-#   build:
-#     context: .
-#     dockerfile: Dockerfile.tensorflow-gpu-jpyter   
-#     target: base
-#   volumes: 
-#     - ./containers/tjg-11-jabir/notebooks:/notebooks
-#     - ./containers/tjg-11-jabir/config:/config
-#   command:
-#     - /bin/sh
-#     - -c
-#     - |
-#       echo "Starting docker-compose's tensorflow-jupyter-gpu"
-#       # nvidia-smi
-#       jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+tensorflow-jupyter-gpu-jabir:
+  container_name: tjg-11-jabir
+  build:
+    context: .
+    dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+    target: base
+  volumes: 
+    - /home/jabirk/setup/ssh-server-setup/containers/tjg-11-jabir/notebooks:/notebooks
+    - /home/jabirk/setup/ssh-server-setup/containers/tjg-11-jabir/config:/config
+  command:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting docker-compose's tensorflow-jupyter-gpu"
+      # nvidia-smi
+      jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
       
-#   environment:
-#     ##### run time ###############
-#     TEST_ENV_VAR: ${TEST_ENV_VAR}
-#     NVIDIA_VISIBLE_DEVICES: all
-#   ports:
-#     - 1244:1244
-#   networks:
-#     - webnet
-#   restart: always
-#   # tty: true
-#   deploy:
-#     resources:
-#       reservations:
-#         devices:
-#         -  driver: nvidia
-#            count: all
-#            capabilities: [gpu]
-# ########
+  environment:
+    ##### run time ###############
+    TEST_ENV_VAR: ${TEST_ENV_VAR}
+    NVIDIA_VISIBLE_DEVICES: all
+  ports:
+    - 1244:1244
+  networks:
+    - webnet
+  restart: always
+  # tty: true
+  deploy:
+    resources:
+      reservations:
+        devices:
+        -  driver: nvidia
+           count: all
+           capabilities: [gpu]
+########
 
-# tensorflow-jupyter-gpu-raghib:
-#   container_name: tjg-12-raghib
-#   build:
-#     context: .
-#     dockerfile: Dockerfile.tensorflow-gpu-jpyter   
-#     target: base
-#   volumes: 
-#     - ./containers/tjg-12-raghib/notebooks:/notebooks
-#     - ./containers/tjg-12-raghib/config:/config
-#   command:
-#     - /bin/sh
-#     - -c
-#     - |
-#       echo "Starting docker-compose's tensorflow-jupyter-gpu"
-#       # nvidia-smi
-#       jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+tensorflow-jupyter-gpu-raghib:
+  container_name: tjg-12-raghib
+  build:
+    context: .
+    dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+    target: base
+  volumes: 
+    - /home/raghibi/setup/ssh-server-setup/containers/tjg-12-raghib/notebooks:/notebooks
+    - /home/raghibi/setup/ssh-server-setup/containers/tjg-12-raghib/config:/config
+  command:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting docker-compose's tensorflow-jupyter-gpu"
+      # nvidia-smi
+      jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
       
-#   environment:
-#     ##### run time ###############
-#     TEST_ENV_VAR: ${TEST_ENV_VAR}
-#     NVIDIA_VISIBLE_DEVICES: all
-#   ports:
-#     - 1245:1245
-#   networks:
-#     - webnet
-#   restart: always
-#   # tty: true
-#   deploy:
-#     resources:
-#       reservations:
-#         devices:
-#         -  driver: nvidia
-#            count: all
-#            capabilities: [gpu]
-# ########
+  environment:
+    ##### run time ###############
+    TEST_ENV_VAR: ${TEST_ENV_VAR}
+    NVIDIA_VISIBLE_DEVICES: all
+  ports:
+    - 1245:1245
+  networks:
+    - webnet
+  restart: always
+  # tty: true
+  deploy:
+    resources:
+      reservations:
+        devices:
+        -  driver: nvidia
+           count: all
+           capabilities: [gpu]
+########
 
-# tensorflow-jupyter-gpu-ashish:
-#   container_name: tjg-13-ashish
-#   build:
-#     context: .
-#     dockerfile: Dockerfile.tensorflow-gpu-jpyter   
-#     target: base
-#   volumes: 
-#     - ./containers/tjg-13-ashish/notebooks:/notebooks
-#     - ./containers/tjg-13-ashish/config:/config
-#   command:
-#     - /bin/sh
-#     - -c
-#     - |
-#       echo "Starting docker-compose's tensorflow-jupyter-gpu"
-#       # nvidia-smi
-#       jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
+tensorflow-jupyter-gpu-ashish:
+  container_name: tjg-13-ashish
+  build:
+    context: .
+    dockerfile: Dockerfile.tensorflow-gpu-jpyter   
+    target: base
+  volumes: 
+    - /home/ashishs/setup/ssh-server-setup/containers/tjg-13-ashish/notebooks:/notebooks
+    - /home/ashishs/setup/ssh-server-setup/containers/tjg-13-ashish/config:/config
+  command:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting docker-compose's tensorflow-jupyter-gpu"
+      # nvidia-smi
+      jupyter notebook --config=/config/jupyter_notebook_config --ip 0.0.0.0
       
-#   environment:
-#     ##### run time ###############
-#     TEST_ENV_VAR: ${TEST_ENV_VAR}
-#     NVIDIA_VISIBLE_DEVICES: all
-#   ports:
-#     - 1246:1246
-#   networks:
-#     - webnet
-#   restart: always
-#   # tty: true
-#   deploy:
-#     resources:
-#       reservations:
-#         devices:
-#         -  driver: nvidia
-#            count: all
-#            capabilities: [gpu]
-# ########
+  environment:
+    ##### run time ###############
+    TEST_ENV_VAR: ${TEST_ENV_VAR}
+    NVIDIA_VISIBLE_DEVICES: all
+  ports:
+    - 1246:1246
+  networks:
+    - webnet
+  restart: always
+  # tty: true
+  deploy:
+    resources:
+      reservations:
+        devices:
+        -  driver: nvidia
+           count: all
+           capabilities: [gpu]
+########
 
 
 
