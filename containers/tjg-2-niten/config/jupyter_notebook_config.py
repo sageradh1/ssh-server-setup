@@ -303,7 +303,7 @@ c.NotebookApp.password_required = True
 
 ## The port the notebook server will listen on (env: JUPYTER_PORT).
 # c.NotebookApp.port = 1235
-c.NotebookApp.port = 70000
+c.NotebookApp.port = 60000
 
 
 ## The number of additional ports to try if the specified port is not available
