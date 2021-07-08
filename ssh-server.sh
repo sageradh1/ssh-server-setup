@@ -6,7 +6,7 @@ password: asmi123
 
 #go to ssh folder
 ssh -i manishb  -L 1234:localhost:1234 manishb@124.41.198.206
-ssh -i nitenl   -L 1235:localhost:1235 nitenl@124.41.198.206
+ssh -i nitenl   -L 60000:localhost:60000 nitenl@124.41.198.206
 ssh -i gaurabs  -L 1236:localhost:1236 gaurabs@124.41.198.206
 ssh -i subashs  -L 1237:localhost:1237 subashs@124.41.198.206
 ssh -i bijayd   -L 1238:localhost:1238 bijayd@124.41.198.206
