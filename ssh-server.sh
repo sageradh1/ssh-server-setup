@@ -19,3 +19,6 @@ ssh -i jabirk   -L 1244:localhost:1244 jabirk@124.41.198.206
 ssh -i raghibi  -L 1245:localhost:1245 raghibi@124.41.198.206
 ssh -i ashishs  -L 1246:localhost:1246 ashishs@124.41.198.206
 
+ssh -i sangamb  -L 60001:localhost:60001 sangamb@124.41.198.206
+
+
